@@ -10,7 +10,11 @@
 </head>
 
 <body>
-    <form name="cad_telefone" action="#" method="POST">
+    <h1 class="titulo-pagina">Cadastro de Telefone</h1>
+    <a href="/" title="voltar" class="bt-voltar">voltar</a>
+    <hr>
+
+    <form name="cad_telefone" action="#" method="POST" class="form-cadastro">
         <label>Tipo do telefone:</label>
         <select name="tp_telefone">
             <option name="Residencial">Residencial</option>
@@ -19,12 +23,11 @@
             <option name="WhatsApp">WhatsApp</option>
         </select>
         <label>Número do Telefone:</label>
-        <input type="text" name="num_telefone">
-        <input type="submit" value="Cadastrar">
+        <input type="text" name="num_telefone" onkeypress="mask(this, mphone);" autocomplete="off" required>
+        <input type="submit" value="Cadastrar" class="bt-cadastrar">
     </form>
 
-    <div>
-        <hr>
+    <div class="container">
         <% if(listaTelefones.length> 0) { %>
             <h3>Lista de telefones cadastrados</h3>
             <table>
@@ -44,7 +47,9 @@
                             <td>
                                 <%= telefone.numero_telefone %>
                             </td>
-                            <td><a href='/clientes/<%=telefone.clienteId%>/telefones/<%=telefone.id%>/deletar'>Excluir</a></td>
+                            <td><a
+                                    href='/clientes/<%=telefone.clienteId%>/telefones/<%=telefone.id%>/deletar'>Excluir</a>
+                            </td>
                         </tr>
                         <% }); %>
                 </tbody>
@@ -54,7 +59,33 @@
                 <h2>
                     <%= 'Nenhum telefone cadastrado' %>
                 </h2>
-            <% } %>
+                <% } %>
     </div>
 </body>
+<script>
+    function mask(o, f) {
+        setTimeout(function () {
+            var v = mphone(o.value);
+            if (v != o.value) {
+                o.value = v;
+            }
+        }, 1);
+    }
+
+    function mphone(v) {
+        var r = v.replace(/\D/g, "");
+        r = r.replace(/^0/, "");
+        if (r.length > 10) {
+            r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+        } else if (r.length > 5) {
+            r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+        } else if (r.length > 2) {
+            r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+        } else {
+            r = r.replace(/^(\d*)/, "($1");
+        }
+        return r;
+    }
+</script>
+
 </html>

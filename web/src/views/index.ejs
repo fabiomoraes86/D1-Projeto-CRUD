@@ -14,13 +14,9 @@
     <a href="/cadastrar" title="Cadastrar Cliente" class="bt-cadastrar pulse">
         Cadastrar Cliente
     </a>
-    <!--form class="busca">
-        <input name="nome" required>
-        <input type="submit" value="Buscar">
-    </form-->
 
     <div class="container">
-        <% if(listaClientes.length > 0) { %>
+        <% if(listaClientes.length> 0) { %>
             <h3>Lista de clientes cadastrados</h3>
             <table>
                 <thead>
@@ -39,9 +35,7 @@
                     <% listaClientes.forEach(function(cliente) { %>
                         <tr>
                             <td>
-                                <a href='/clientes/<%=cliente.id%>/alterar'>
-                                    <%= cliente.nome %>
-                                </a>
+                                <%= cliente.nome %>
                             </td>
                             <td>
                                 <%= cliente.cpf %>
@@ -58,7 +52,9 @@
                         <% }); %>
                 </tbody>
             </table>
-            <% } %>
+            <% } else { %>
+                <strong>Nenhum cliente cadastrado.</strong>
+                <% } %>
     </div>
 </body>
 

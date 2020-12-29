@@ -10,7 +10,10 @@
 </head>
 
 <body>
-    <form name="cad_telefone" action="#" method="POST">
+    <h1 class="titulo-pagina">Cadastro de Redess Sociais</h1>
+    <a href="/" title="voltar" class="bt-voltar">voltar</a>
+    <hr>
+    <form name="cad_telefone" action="#" method="POST" class="form-cadastro">
         <label>Rede Social:</label>
         <select name="nome_rede_social">
             <option name="Facebook">Facebook</option>
@@ -23,8 +26,7 @@
         <input type="submit" value="Cadastrar">
     </form>
 
-    <div>
-        <hr>
+    <div class="container">
         <% if(listaSocials.length> 0) { %>
             <h3>Lista de redes sociais cadastradas</h3>
             <table>
@@ -44,7 +46,8 @@
                             <td>
                                 <%= social.link_rede_social %>
                             </td>
-                            <td><a href='/clientes/<%=social.clienteId%>/socials/<%=social.id%>/deletar'>Excluir</a></td>
+                            <td><a href='/clientes/<%=social.clienteId%>/socials/<%=social.id%>/deletar'>Excluir</a>
+                            </td>
                         </tr>
                         <% }); %>
                 </tbody>
@@ -54,7 +57,8 @@
                 <h2>
                     <%= 'Nenhum telefone cadastrado' %>
                 </h2>
-            <% } %>
+                <% } %>
     </div>
 </body>
+
 </html>

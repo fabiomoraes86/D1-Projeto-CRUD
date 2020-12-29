@@ -9,7 +9,9 @@ const PORT = 8080;
 const app = express();
 
 const path = require('path');
+
 const { error } = require('console');
+
 const { response } = require('express');
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -46,19 +48,19 @@ app.post('/cadastrar', (req, res) => {
 
         }).catch((error) => res.send(error));
 });
-app.get('/clientes/:id/editar', (req,res) => {
+app.get('/clientes/:id/editar', (req, res) => {
     api.get(`/clientes/${req.params.id}`, req.body)
-    .then((response) => {
-        res.render('cliente_edit', {
-            dadosCliente : response.data
-        });
-    }).catch((error) => res.send(error));
+        .then((response) => {
+            res.render('cliente_edit', {
+                dadosCliente: response.data
+            });
+        }).catch((error) => res.send(error));
 });
-app.post('/clientes/:id/editar', (req,res) => {
+app.post('/clientes/:id/editar', (req, res) => {
     api.patch(`/clientes/${req.params.id}`, req.body)
-    .then(() => {
-        res.redirect('/');
-    }).catch((error) => res.send(error));
+        .then(() => {
+            res.redirect('/');
+        }).catch((error) => res.send(error));
 });
 
 /* Página telefones*/

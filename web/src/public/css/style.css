@@ -96,12 +96,12 @@ hr {
     font-size: 13px;
     font-weight: bold;
 }
-.form-cadastro input[type=text], .form-cadastro input[type=date], .form-cadastro label{
+.form-cadastro input[type=text], .form-cadastro input[type=date], .form-cadastro label, form select {
     float:left;
     width:100%;
 }
 
-.form-cadastro input[type=text], form input[type=date] {
+.form-cadastro input[type=text], form input[type=date], form select {
     border:1px solid #ccc;
     height: 40px;
     padding:0 5px;

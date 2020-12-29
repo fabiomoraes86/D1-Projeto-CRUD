@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css" type="text/css" media="all">
     <title>Cadastro de Endereços</title>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 </head>
 
 <body>
-    <form name="cad_endereco" action="#" method="POST">
-
+    <h1 class="titulo-pagina">Cadastro de Telefone</h1>
+    <a href="/" title="voltar" class="bt-voltar">voltar</a>
+    <hr>
+    <form name="cad_endereco" action="#" method="POST" class="form-cadastro">
         <label>Rua:</label>
         <input type="text" name="endereco" required>
         <br><br>
@@ -23,7 +26,7 @@
         <input type="text" name=complemento>
         <br><br>
         <label>CEP:</label>
-        <input type="text" name="cep">
+        <input type="text" name="cep" class="cep" autocomplete="off">
         <br><br>
         <label>Bairro:</label>
         <input type="text" name="bairro" required>
@@ -34,11 +37,10 @@
         <label>Estado:</label>
         <input type="text" name="estado">
         <br><br>
-        <input type="submit" name="Cadastrar">
+        <input type="submit" name="Cadastrar" class="bt-cadastrar">
     </form>
-    
-    <div>
-        <hr>
+
+    <div class="container">
         <% if(listaEnderecos.length> 0) { %>
             <h3>Lista de endereços cadastrados</h3>
             <table>
@@ -64,7 +66,9 @@
                                 <%= endereco.cidade %> - <%= endereco.estado %>
                             </td>
                             <td><a href="#">Editar</a></td>
-                            <td><a href='/clientes/<%=endereco.clienteId%>/enderecos/<%=endereco.id%>/deletar'>Excluir</a></td>
+                            <td><a
+                                    href='/clientes/<%=endereco.clienteId%>/enderecos/<%=endereco.id%>/deletar'>Excluir</a>
+                            </td>
                         </tr>
                         <% }); %>
                 </tbody>
@@ -74,9 +78,13 @@
                 <h2>
                     <%= 'Nenhum telefone cadastrado' %>
                 </h2>
-            <% } %>
+                <% } %>
     </div>
-    
-</body>
 
+</body>
+<script>
+    $(document).ready(function(){
+        $('.cep').mask('00000-000');
+    });
+</script>
 </html>
