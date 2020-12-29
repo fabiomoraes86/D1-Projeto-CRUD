@@ -30,7 +30,6 @@ module.exports = {
             .catch((error) => res.status(400).send(error));
     },
     patch(req, res) {
-        console.log(req.params.id)
         return clientes
             .update( req.body, {
                 where:[{

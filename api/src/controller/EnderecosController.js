@@ -27,7 +27,6 @@ module.exports = {
             .catch((error) => res.status(400).send(error));
     },
     delete(req, res) {
-        console.log(req.params.idEndereco);
         return enderecos
             .destroy({
                 where: [{
