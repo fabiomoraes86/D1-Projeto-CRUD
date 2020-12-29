@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all">
+    <title>Cadastro de Telefones</title>
+</head>
+
+<body>
+    <form name="cad_telefone" action="#" method="POST">
+        <label>Tipo do telefone:</label>
+        <select name="tp_telefone">
+            <option name="Residencial">Residencial</option>
+            <option name="Comercial">Comercial</option>
+            <option name="Celular">Celular</option>
+            <option name="WhatsApp">WhatsApp</option>
+        </select>
+        <label>Número do Telefone:</label>
+        <input type="text" name="num_telefone">
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <div>
+        <hr>
+        <% if(listaTelefones.length> 0) { %>
+            <h3>Lista de telefones cadastrados</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo Telefone</th>
+                        <th>Numero Telefone</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% listaTelefones.forEach(function(telefone) { %>
+                        <tr>
+                            <td>
+                                <%= telefone.tipo_telefone %>
+                            </td>
+                            <td>
+                                <%= telefone.numero_telefone %>
+                            </td>
+                            <td><a href='/clientes/<%=telefone.clienteId%>/telefones/<%=telefone.id%>/deletar'>Excluir</a></td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+
+            <% } else { %>
+                <h2>
+                    <%= 'Nenhum telefone cadastrado' %>
+                </h2>
+            <% } %>
+    </div>
+</body>
+</html>

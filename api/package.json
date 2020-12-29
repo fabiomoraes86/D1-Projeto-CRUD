@@ -1,0 +1,23 @@
+{
+    "name": "crudd1",
+    "version": "1.0.0",
+    "description": "Crud D1 API",
+    "scripts": {
+        "start": "nodemon -L src/server.js",
+        "sequelize:migrate": "npx sequelize db:migrate",
+        "sequelize-migrate:rollback": "npx sequelize db:migrate:undo"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "pg": "^8.5.1",
+        "pg-hstore": "^2.3.3",
+        "postgres": "^1.0.2",
+        "sequelize": "^6.3.5",
+        "sequelize-cli": "^6.2.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    }
+}

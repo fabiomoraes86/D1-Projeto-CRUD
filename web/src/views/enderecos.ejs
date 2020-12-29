@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all">
+    <title>Cadastro de Endereços</title>
+    
+</head>
+
+<body>
+    <form name="cad_endereco" action="#" method="POST">
+
+        <label>Rua:</label>
+        <input type="text" name="endereco" required>
+        <br><br>
+        <label>Número:</label>
+        <input type="text" name="numero" required>
+        <br><br>
+        <label>Complemento:</label>
+        <input type="text" name=complemento>
+        <br><br>
+        <label>CEP:</label>
+        <input type="text" name="cep">
+        <br><br>
+        <label>Bairro:</label>
+        <input type="text" name="bairro" required>
+        <br><br>
+        <label>Cidade:</label>
+        <input type="text" name="cidade">
+        <br><br>
+        <label>Estado:</label>
+        <input type="text" name="estado">
+        <br><br>
+        <input type="submit" name="Cadastrar">
+    </form>
+    
+    <div>
+        <hr>
+        <% if(listaEnderecos.length> 0) { %>
+            <h3>Lista de endereços cadastrados</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Endereço</th>
+                        <th>Complemento</th>
+                        <th>Cidade</th>
+                        <th>Editar</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% listaEnderecos.forEach(function(endereco) { %>
+                        <tr>
+                            <td>
+                                <%= endereco.nome_rua %>, Num.: <%= endereco.numero_casa %> - CEP: <%= endereco.cep %>
+                            </td>
+                            <td>
+                                <%= endereco.complemento %>
+                            </td>
+                            <td>
+                                <%= endereco.cidade %> - <%= endereco.estado %>
+                            </td>
+                            <td><a href="#">Editar</a></td>
+                            <td><a href='/clientes/<%=endereco.clienteId%>/enderecos/<%=endereco.id%>/deletar'>Excluir</a></td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+
+            <% } else { %>
+                <h2>
+                    <%= 'Nenhum telefone cadastrado' %>
+                </h2>
+            <% } %>
+    </div>
+    
+</body>
+
+</html>

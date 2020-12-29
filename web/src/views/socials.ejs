@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all">
+    <title>Cadastro de Redes Sociais</title>
+</head>
+
+<body>
+    <form name="cad_telefone" action="#" method="POST">
+        <label>Rede Social:</label>
+        <select name="nome_rede_social">
+            <option name="Facebook">Facebook</option>
+            <option name="Twitter">Twitter</option>
+            <option name="Instagram">Instagram</option>
+            <option name="LinkedIn">LinkedIn</option>
+        </select>
+        <label>Link:</label>
+        <input type="text" name="link_rede_social">
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <div>
+        <hr>
+        <% if(listaSocials.length> 0) { %>
+            <h3>Lista de redes sociais cadastradas</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rede Social</th>
+                        <th>Link</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% listaSocials.forEach(function(social) { %>
+                        <tr>
+                            <td>
+                                <%= social.nome_rede_social %>
+                            </td>
+                            <td>
+                                <%= social.link_rede_social %>
+                            </td>
+                            <td><a href='/clientes/<%=social.clienteId%>/socials/<%=social.id%>/deletar'>Excluir</a></td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+
+            <% } else { %>
+                <h2>
+                    <%= 'Nenhum telefone cadastrado' %>
+                </h2>
+            <% } %>
+    </div>
+</body>
+</html>

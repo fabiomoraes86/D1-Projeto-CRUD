@@ -1,0 +1,9 @@
+// https://gist.github.com/giacomorebonato/579ea349417bdd3c03829457619ac6b5
+var path = require('path')
+
+module.exports = {
+  'config':          path.resolve('src', 'config', 'config.json'),
+  'migrations-path': path.resolve('src', 'migrations'),
+  'models-path':     path.resolve('src', 'models'),
+  'seeders-path':    path.resolve('src', 'seeders'),
+}

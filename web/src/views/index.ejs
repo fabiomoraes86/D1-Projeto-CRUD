@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de clientes</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all">
+</head>
+
+<body>
+
+    <a href="/cadastrar" title="Cadastrar Cliente" class="bt-cadastrar pulse">
+        Cadastrar Cliente
+    </a>
+    <!--form class="busca">
+        <input name="nome" required>
+        <input type="submit" value="Buscar">
+    </form-->
+
+    <div class="container">
+        <% if(listaClientes.length > 0) { %>
+            <h3>Lista de clientes cadastrados</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                        <th>Editar</th>
+                        <th>Telefones</th>
+                        <th>Endereços</th>
+                        <th>Redes Sociais</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% listaClientes.forEach(function(cliente) { %>
+                        <tr>
+                            <td>
+                                <a href='/clientes/<%=cliente.id%>/alterar'>
+                                    <%= cliente.nome %>
+                                </a>
+                            </td>
+                            <td>
+                                <%= cliente.cpf %>
+                            </td>
+                            <td>
+                                <%= cliente.rg %>
+                            </td>
+                            <td><a href="/clientes/<%=cliente.id%>/editar">Editar</a></td>
+                            <td><a href='/clientes/<%=cliente.id%>/telefones'>Visualizar / Cadastrar</a></td>
+                            <td><a href='/clientes/<%=cliente.id%>/enderecos'>Visualizar / Cadastrar</a></td>
+                            <td><a href='/clientes/<%=cliente.id%>/socials'>Visualizar / Cadastrar</a></td>
+                            <td><a href='/clientes/<%=cliente.id%>/deletar'>Excluir</a></td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+            <% } %>
+    </div>
+</body>
+
+</html>
